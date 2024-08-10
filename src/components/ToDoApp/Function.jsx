@@ -5,6 +5,7 @@ import {
   faTrash,
   faFloppyDisk,
 } from "@fortawesome/free-solid-svg-icons";
+
 function Function({ task, tasks, setTasks }) {
   const [isEditing, setIsEditing] = useState(false);
   const [val, setVal] = useState(task.text);
