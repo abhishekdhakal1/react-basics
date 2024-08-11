@@ -29,7 +29,7 @@ function Todo() {
             {isAdd && (
               <div className="ml-custom transform translate-y-[5px] flex">
                 <input
-                  className="p-1 border-black border-2 h-10 rounded"
+                  className="p-1 border-2 h-10 rounded focus:outline-none"
                   type="text"
                   placeholder="Enter Your Task"
                   value={val}
@@ -41,8 +41,8 @@ function Todo() {
               </div>
             )}
 
-            <div className="m-2 text-center">
-              <div>
+            <div className="text-[17px]">
+              <div className="ml-custom">
                 {tasks.map((task) => {
                   return (
                     <Function

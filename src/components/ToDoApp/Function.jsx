@@ -1,6 +1,8 @@
 import { useState } from "react";
 import moment from "moment";
-import { MdDelete, MdSaveAlt, MdEditNote } from "react-icons/md";
+import { BiTrash } from "react-icons/bi";
+import { GoPencil } from "react-icons/go";
+import { BsSave } from "react-icons/bs";
 
 function Function({ task, tasks, setTasks }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -21,46 +23,47 @@ function Function({ task, tasks, setTasks }) {
 
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex">
         <p>
           {isEditing ? (
             <input
-              className="m-1 border-black border-2 h-10 rounded"
+              className="p-1 border-2 h-10 rounded focus:outline-none"
               type="text"
               defaultValue={task.text}
               value={val}
               onChange={(e) => setVal(e.target.value)}
             />
           ) : (
-            <div className="font-semibold">
-              <p className="text-primaryOrange font-semibold">
-                {moment().format('LL')}
-              </p> 
-              <p>{task.text}</p>
+            <div className="mt-2 font-semibold">
+              <p className="text-primaryRed font-semibold">
+               {moment().format('dddd, MMMM D')}
+              </p>
+              <div className="ml-3 mt-2 flex">{task.text}
+              <button
+                className="ml-1 p-1"
+                onClick={() => {
+                  setIsEditing((currentMode) => !currentMode);
+                }}
+              >
+                <GoPencil className="text-primaryOrange h-4 w-4" />
+              </button>
+
+              <button
+                className="p-1"
+                onClick={() => {
+                  deleted(task.id);
+                }}
+              >
+                <BiTrash className="text-primaryOrange text-xl h-4 w-4" />
+              </button>
+              </div>
             </div>
           )}
         </p>
-        <button
-          className="p-1"
-          onClick={() => {
-            setIsEditing((currentMode) => !currentMode);
-          }}
-        >
-          <MdEditNote className="text-primaryOrange text-3xl absolute right-[70px]" />
-        </button>
 
-        <button
-          className="p-1"
-          onClick={() => {
-            deleted(task.id);
-            console.log("deleted");
-          }}
-        >
-          <MdDelete className="text-primaryOrange text-3xl absolute right-[40px]" />
-        </button>
         {isEditing && (
-          <button className="p-1 m-1" onClick={save}>
-            <MdSaveAlt className="text-primaryOrange text-3xl" />
+          <button className="p-1" onClick={save}>
+            <BsSave className="text-primaryOrange text-xl" />
           </button>
         )}
       </div>

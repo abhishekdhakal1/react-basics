@@ -17,7 +17,7 @@ export default {
       },
       colors : {
         "primaryWhite" : '#e5e5e5',
-        'primaryRed' : "#e53170",
+        'primaryRed' : "#E53170",
         'primaryOrange' : "#F25F4C",
         'lightRed' : "#B07289"
       }
