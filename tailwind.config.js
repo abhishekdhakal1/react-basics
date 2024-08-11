@@ -7,10 +7,13 @@ export default {
   theme: {
     extend: {
       height:{
-        'custom' : '700px',
+        'custom' : '750px',
       },
       width:{
-       'custom' : '421px'
+       'custom' : '338px'
+      },
+      margin : {
+      'custom' : '23.39px'
       },
       colors : {
         "primaryWhite" : '#e5e5e5',
