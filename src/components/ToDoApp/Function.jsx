@@ -1,12 +1,7 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPenToSquare,
-  faTrash,
-  faFloppyDisk,
-} from "@fortawesome/free-solid-svg-icons";
+import { MdDelete, MdSaveAlt, MdEditNote } from "react-icons/md";
 
-function Function({ task, tasks, setTasks }) {
+function Function({ task, tasks, setTasks, year, month, day }) {
   const [isEditing, setIsEditing] = useState(false);
   const [val, setVal] = useState(task.text);
 
@@ -25,34 +20,7 @@ function Function({ task, tasks, setTasks }) {
 
   return (
     <>
-      <div>
-        <button
-          className="p-1 m-1 border-black border-2 rounded"
-          onClick={() => {
-            setIsEditing((currentMode) => !currentMode);
-          }}
-        >
-          <FontAwesomeIcon icon={faPenToSquare} />
-        </button>
-
-        <button
-          className="p-1 m-1 border-black border-2 rounded"
-          onClick={() => {
-            deleted(task.id);
-            console.log("deleted");
-          }}
-        >
-          <FontAwesomeIcon icon={faTrash} />
-        </button>
-        {isEditing && (
-          <button
-            className="p-1 m-1 border-black border-2 rounded"
-            onClick={save}
-          >
-            <FontAwesomeIcon icon={faFloppyDisk} />
-          </button>
-        )}
-
+      <div className="flex justify-center">
         <p>
           {isEditing ? (
             <input
@@ -63,9 +31,37 @@ function Function({ task, tasks, setTasks }) {
               onChange={(e) => setVal(e.target.value)}
             />
           ) : (
-            task.text
+            <div>
+              <p className="text-primaryOrange font-semibold">
+                {`${year} - ${month} - ${day}`}
+              </p>
+              <p>{task.text}</p>
+            </div>
           )}
         </p>
+        <button
+          className="p-1 m-1"
+          onClick={() => {
+            setIsEditing((currentMode) => !currentMode);
+          }}
+        >
+          <MdEditNote className="text-primaryOrange text-3xl" />
+        </button>
+
+        <button
+          className="p-1 m-1"
+          onClick={() => {
+            deleted(task.id);
+            console.log("deleted");
+          }}
+        >
+          <MdDelete className="text-primaryOrange text-3xl" />
+        </button>
+        {isEditing && (
+          <button className="p-1 m-1" onClick={save}>
+            <MdSaveAlt className="text-primaryOrange text-3xl" />
+          </button>
+        )}
       </div>
     </>
   );
