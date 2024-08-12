@@ -1,3 +1,4 @@
+//simple project using tailwind...
 import Button from "./Button";
 import { useState } from "react";
 const Calculator = () => {

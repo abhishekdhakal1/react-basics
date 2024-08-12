@@ -1,3 +1,4 @@
+//simple project using tailwind...
 import { useEffect, useState } from "react";
 
 function Timer() {
