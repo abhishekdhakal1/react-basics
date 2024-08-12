@@ -23,8 +23,8 @@ function Function({ task, tasks, setTasks }) {
 
   return (
     <>
-      <div className="flex">
-        <p>
+      <div className="flex w-full">
+        <p className="w-full">
           {isEditing ? (
             <input
               className="p-1 border-2 h-10 rounded focus:outline-none"
@@ -34,28 +34,30 @@ function Function({ task, tasks, setTasks }) {
               onChange={(e) => setVal(e.target.value)}
             />
           ) : (
-            <div className="mt-2 font-semibold">
+            <div className="p-2 font-semibold w-full">
               <p className="text-primaryRed font-semibold">
-               {moment().format('dddd, MMMM D')}
+                {moment().format("dddd, MMMM D")}
               </p>
-              <div className="ml-3 mt-2 flex">{task.text}
-              <button
-                className="ml-1 p-1"
-                onClick={() => {
-                  setIsEditing((currentMode) => !currentMode);
-                }}
-              >
-                <GoPencil className="text-primaryOrange h-4 w-4" />
-              </button>
+              <div className="flex items-center justify-between w-full">
+                <div className="flex items-center">{task.text}</div>
+                <div className="flex items-center">
+                  <button
+                    onClick={() => {
+                      setIsEditing((currentMode) => !currentMode);
+                    }}
+                  >
+                    <GoPencil className="text-primaryOrange h-4 w-4" />
+                  </button>
 
-              <button
-                className="p-1"
-                onClick={() => {
-                  deleted(task.id);
-                }}
-              >
-                <BiTrash className="text-primaryOrange text-xl h-4 w-4" />
-              </button>
+                  <button
+                    className="p-1"
+                    onClick={() => {
+                      deleted(task.id);
+                    }}
+                  >
+                    <BiTrash className="text-primaryOrange text-xl h-4 w-4" />
+                  </button>
+                </div>
               </div>
             </div>
           )}
